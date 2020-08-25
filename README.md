@@ -1,49 +1,39 @@
-## Laravel Ecommerce Platform
+## It is an online publishing tool for magazine creation and modification based on photos and pdfs. 
 
-This is a e-commerce platform I made mostly using Laravel 5.4
-
-| [Features][] | [Requirements][] | [Install][] | [How to setting][] | [Contributors][] | [License][] |
-|---|---|---|---|---|---|
+Developed a personalised WordPress theme from scratch fitting user’s
+needs.
 
 ## Features 
-- Multiple language display for front and back end
-- Automatic cross sell / up sell / related product offerings
-- Open Source
+- Developed a system that allows users to upload pictures and flipbook
+- Built eCommerce systems with integrated PayPal payment method
+- Providers have also admin functionalities allowing them to set restrictions
+  over viewer groups and handle the user requests
+- Flipbooks sharing and like/dislike and Followers' functionality
+- Google ads API integration
 - Social Media Integration
+- Set cURL for send atomatic updated nuesllter 
 - Unlimited Categories
 - Unlimited Products
-- Related Products, Recommendations for you in our categories, Store Trending
-- Create custom transaction emails
-- Newsletter management
-- Create different sales rules for groups of products
-- Customer loyalty discounts
-- An “intelligent” search form
 - Custom page creation
 - Contact forms
-- Manage orders/invoicing/shipment processing
-- Manage different sales tax arrangements
-- Stock control
-- Integration with Social Media promotion tools
-- Tier pricing
-- Multiple Currency
-- Wish Lists
-- Ability to Ship to Multiple Addresses
-- Single step checkout for registered customers
+- Configured PHPMailer
 
 ## Requirements
 
 	PHP >= 5.6.4
+	WordPress >= 4.8
 	MySQL >= 5.7
-	OpenSSL PHP Extension
+	OpenSSL PC Extension
 	PDO PHP Extension
 	Mbstring PHP Extension
 	Tokenizer PHP Extension
 	XML PHP Extension
+	cURL
 
 ## Install
 
 Clone repo
 
 ```
-git clone https://github.com/intelligo-systems/laravel-ecommerce.git
+git clone https://github.com/pooja3011-create/flipbooks-wordpress.git
 ```
