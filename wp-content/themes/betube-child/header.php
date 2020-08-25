@@ -1,0 +1,134 @@
+<?php
+/**
+ * The template for displaying the header
+ *
+ * Displays all of the head element and everything up until the "container" div.
+ *
+ * @package WordPress
+ * @subpackage betube
+ * @since betube 1.0
+ */
+?>
+<!doctype html>
+<!--[if IE 7]>
+<html class="ie ie7" <?php language_attributes(); ?>>
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" <?php language_attributes(); ?>>
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html class="no-js" <?php language_attributes(); ?>>
+    <!--<![endif]-->
+    <?php
+    global $redux_demo;
+    $betubeFavicon = $redux_demo['betube-favicon']['url'];
+    $betubeThemeColor = $redux_demo['betube-color-title'];
+    $beTubeFacebookTags = $redux_demo['betube-facebook-meta-on'];
+    $beTubeLoaderOn = $redux_demo['betube-loader-on'];
+    ?>
+
+    <head>
+        <meta charset="<?php bloginfo('charset'); ?>" />
+        <!-- Force IE to use the latest rendering engine available -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Mobile Meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">			
+
+        <meta name="theme-color" content="<?php echo $betubeThemeColor; ?>">		
+
+        <!-- If Site Icon isn't set in customizer -->
+        <?php if (!function_exists('has_site_icon') || !has_site_icon()) { ?>
+            <!-- Icons & Favicons -->			
+            <?php if (empty($betubeFavicon)) { ?>
+                <link rel="icon" href="<?php echo get_template_directory_uri(); ?>/favicon.png">
+            <?php } else { ?>			
+                <link rel="icon" href="<?php echo esc_url($betubeFavicon); ?>">
+            <?php } ?>
+            <link href="<?php echo get_template_directory_uri(); ?>/assets/images/apple-icon-touch.png" rel="apple-touch-icon" />
+            <!--[if IE]>
+                    <link rel="shortcut icon" href="<?php echo esc_url($betubeFavicon); ?>">
+            <![endif]-->
+            <meta name="msapplication-TileColor" content="<?php echo $betubeThemeColor; ?>">
+            <meta name="msapplication-TileImage" content="<?php echo esc_url($betubeFavicon); ?>">
+            <meta name="theme-color" content="<?php echo $betubeThemeColor; ?>">
+        <?php } ?>
+
+        <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
+        <?php
+        if ($beTubeFacebookTags == 1) {
+            echo betube_facebook_tags();
+        } else {
+            if (is_single()) {
+                $ID = $wp_query->post->ID;
+                $feat_image = wp_get_attachment_url(get_post_thumbnail_id($ID));
+                ?>
+                <meta property="og:image" content="<?php echo esc_url($feat_image); ?>"/>
+                <?php
+            }
+        }
+        ?>		
+        <?php wp_head(); ?>
+        <script>
+            jQuery(window).ready(function () {
+                jQuery('#owl-demo').hide();
+                var img = '<?php echo get_stylesheet_directory_uri() . '/assets/images/loader.gif'; ?>';
+                jQuery('#premium').append('<div id="loader" class="ls-loading-indicator" style="text-align: center;"><img src="' + img + '"></div>');
+
+//                console.log(1);
+            });
+            jQuery(window).load(function () {
+                jQuery('#loader').remove();
+                jQuery('#owl-demo').show();
+                jQuery('.premium-img').show();
+//                console.log(2);
+            });
+        </script>
+        <style>
+            #navBar .top-bar .menu-text {
+                padding: 5px 0 !important;
+                margin: 0 !important;
+            }
+        </style>
+    </head>
+    <!-- Uncomment this line if using the Off-Canvas Menu --> 
+    <body <?php body_class(); ?>>
+        <!--betubeLoader-->
+        <?php if ($beTubeLoaderOn == 1) { ?>
+            <div id="betubeloader-container">
+                <div id="betubeloader-animation">&nbsp;</div>
+            </div>
+        <?php } ?>
+        <?php
+        if (!isset($_COOKIE['cookiePopup'])) {
+            ?>
+            <div class="top-bar-section bg-color2 white" id="cookieDiv">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12" style="text-align:center;">
+                            <?php
+                            if (is_active_sidebar('cookie-header')) {
+                                dynamic_sidebar('cookie-header');
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
+        }
+        ?>
+        <!--betubeLoader-->
+        <div class="off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+                <?php get_template_part('parts/content', 'offcanvas'); ?>
+
+                <div class="off-canvas-content" data-off-canvas-content>
+
+                    <header class="header" role="banner">
+
+                        <!-- This navs will be applied to the topbar, above all content 
+                                 To see additional nav styles, visit the /parts directory -->
+                        <?php get_template_part('parts/nav', 'offcanvas-topbar'); ?>
+
+                    </header> <!-- end .header -->
