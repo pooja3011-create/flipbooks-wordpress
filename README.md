@@ -26,8 +26,8 @@ needs.
 	OpenSSL PC Extension
 	PDO PHP Extension
 	Mbstring PHP Extension
-	Tokenizer PHP Extension
 	XML PHP Extension
+	PHPMailer
 	cURL
 
 ## Install
